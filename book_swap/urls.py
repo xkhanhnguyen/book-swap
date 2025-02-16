@@ -47,7 +47,7 @@ urlpatterns = [
 # Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
-]
+] +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # urlpatterns = [
 #      path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='users/login.html',
