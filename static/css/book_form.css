@@ -1,0 +1,62 @@
+/* Light grey background */
+.site-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Form Container */
+  .form-container {
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border: none; /* White form background */
+  }
+  
+  /* Labels */
+  .form-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Input Fields */
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #2a2a2a;
+  }
+
+  /* Make dropdown (select) text light grey */
+select {
+    color: #d3d3d3
+  }
+  
+  /* Ensure dropdown text becomes darker when an option is selected */
+  select option {
+    color: #d3d3d3;
+  }
+  
+  
+  textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  /* Form Actions */
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
