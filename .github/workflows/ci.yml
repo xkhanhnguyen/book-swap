@@ -2,8 +2,8 @@ name: ci
 on:
   pull_request:
     branches: [ main ]
-  # push:
-  #   branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
         chmod 600 ~/.ssh/id_rsa
-        ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.SSH_SERVER }} "pkill -SIGTERM gunicorn || true"
         ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.SSH_SERVER }} "mkdir -p /app"
-        scp -i ~/.ssh/id_rsa -r static staticfiles book_swap catalog config store users media ubuntu@${{ secrets.SSH_SERVER }}:/app
-        ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.SSH_SERVER }} "gunicorn -c config/gunicorn/production.py"
+        scp -i ~/.ssh/id_rsa -r static book_swap catalog config store users media ubuntu@${{ secrets.SSH_SERVER }}:/app
+        scp -i ~/.ssh/id_rsa -r staticfiles/* ubuntu@${{ secrets.SSH_SERVER }}:/app/static
+        ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.SSH_SERVER }} "sudo systemctl restart gunicorn"
