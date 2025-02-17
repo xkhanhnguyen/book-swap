@@ -36,7 +36,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['bookswap.corymurphy.io', 'localhost']
+ALLOWED_HOSTS = ['bookswap.corymurphy.io', 'localhost', '127.0.0.1']
 
 
 # Application definition

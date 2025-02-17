@@ -37,7 +37,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
     
     path('accounts/', include('users.urls')),
-    path('', RedirectView.as_view(url='/accounts/', permanent=True)),
+    path('', RedirectView.as_view(url='/users/', permanent=True)),
 
     path('store/', include('store.urls')),
     path('', RedirectView.as_view(url='/store/', permanent=True)),
@@ -49,22 +49,4 @@ urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
 ] +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# urlpatterns = [
-#      path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='users/login.html',
-#                                            authentication_form=LoginForm), name='login'),
-#     re_path(r'^oauth/', include('social_django.urls', namespace='social')),
-                                       
-#     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-#     path('password-reset/', ResetPasswordView.as_view(), name='password-reset'),
 
-#     # The user’s id encoded in base 64.
-#     path('password-reset-confirm/<uidb64>/<token>/',
-#          auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
-#          name='password-reset-confirm'),
-
-#     path('password-reset-complete/',
-#          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
-#          name='password_reset_complete'),
-
-#    path('password-change/', ChangePasswordView.as_view(), name='password-change'),  
-# ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
