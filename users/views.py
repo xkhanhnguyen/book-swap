@@ -4,16 +4,21 @@ from django.views import View
 
 from .forms import RegisterForm
 from django.contrib.auth.views import LoginView
-from .forms import RegisterForm, LoginForm,  UpdateUserForm, UpdateProfileForm
+from .forms import RegisterForm, LoginForm,  UpdateUserForm, UpdateProfileForm, CustomPasswordChangeForm
 
 from django.urls import reverse_lazy
-from django.contrib.auth.views import PasswordResetView, PasswordChangeView
+from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 
-
+# password change
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.template.response import TemplateResponse
 
 class RegisterView(View):
     form_class = RegisterForm
@@ -90,10 +95,24 @@ def profile(request):
 
     return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
+@login_required
+def custom_password_change(request):
+    # Set the redirect URL after the password is successfully changed
+    post_change_redirect = reverse_lazy('password_reset_confirm.html')
+    
+    # Handle POST request
+    if request.method == "POST":
+        form = CustomPasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(post_change_redirect)
+    else:
+        form = CustomPasswordChangeForm(user=request.user)
 
+    # Pass form to template
+    context = {
+        'form': form,
+    }
+    
+    return TemplateResponse(request, 'users/password_change.html', context)
 
-
-class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
-    template_name = 'users/templates.password_change.html'
-    success_message = "Successfully Changed Your Password"
-    success_url = reverse_lazy('users-home')

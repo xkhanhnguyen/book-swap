@@ -28,5 +28,5 @@ urlpatterns = [
          name='password_reset_complete'),
 
    path('profile/', views.profile, name='users-profile'),    
-   path('password-change/', views.ChangePasswordView.as_view(), name='password-change'),  
+   path('password-change/', views.custom_password_change, name='password-change'),  
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

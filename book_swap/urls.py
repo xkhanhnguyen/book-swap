@@ -14,12 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-# , re_path
-from django.contrib import admin
-# from django.contrib.auth import views as auth_views
-# from users.views import CustomLoginView, ResetPasswordView, ChangePasswordView
 
-# from users.forms import LoginForm
+from django.contrib import admin
+
 
 # Use include() to add URLS from the catalog application and authentication system
 from django.urls import include
@@ -41,12 +38,6 @@ urlpatterns = [
 
     path('store/', include('store.urls')),
     path('', RedirectView.as_view(url='/store/', permanent=True)),
+
+    path('accounts/', include('django.contrib.auth.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-
-# Add Django site authentication urls (for login, logout, password management)
-urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
-] +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
