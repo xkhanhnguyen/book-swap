@@ -15,9 +15,7 @@ from .models import Profile
 
 # password change
 from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from django.template.response import TemplateResponse
 
 class RegisterView(View):
@@ -98,7 +96,7 @@ def profile(request):
 @login_required
 def custom_password_change(request):
     # Set the redirect URL after the password is successfully changed
-    post_change_redirect = reverse_lazy('password_reset_confirm.html')
+    post_change_redirect = reverse_lazy('password-change-done')
     
     # Handle POST request
     if request.method == "POST":
@@ -116,3 +114,5 @@ def custom_password_change(request):
     
     return TemplateResponse(request, 'users/password_change.html', context)
 
+def password_change_done(request):
+    return render(request, 'users/password_change_done.html')
