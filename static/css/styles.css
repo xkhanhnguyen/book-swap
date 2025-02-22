@@ -702,3 +702,17 @@ hr {
 
 .center-container a.github {
   background-color: rgb(7, 53, 7); 
+}
+
+button.dropdown-item {
+    color: #d3d3d3;
+    padding: 10px;
+    text-decoration: none;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+button.dropdown-item:hover {
+    background-color: #555;
+    color: #fff;
+}

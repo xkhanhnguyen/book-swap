@@ -37,7 +37,14 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Account Settings</a>
                         <a class="dropdown-item" href="#">Help</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: transparent !important; border: none !important;" class="dropdown-item">Sign out</button>
+                        </form>
+
+                        <!-- text-decoration: none;
+                        color: var(--text-light-grey);
+                        transition: color 0.3s ease; -->
                     </div>
                 </li>
                 {% else %}
