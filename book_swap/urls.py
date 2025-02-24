@@ -27,6 +27,7 @@ from django.conf.urls.static import static
 
 #Add URL maps to redirect the base URL to our application
 from django.views.generic import RedirectView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,4 +41,10 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/store/', permanent=True)),
 
     path('accounts/', include('django.contrib.auth.urls'))
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += staticfiles_urlpatterns()

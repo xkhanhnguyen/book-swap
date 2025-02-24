@@ -5,7 +5,7 @@ from django.urls import re_path
 
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     
      path('profile/', views.profile, name='users-profile'),
@@ -21,6 +21,11 @@ urlpatterns = [
      path('password-change/', views.custom_password_change, name='password-change'),  
      path('password_change/done/', views.password_change_done, name='password-change-done'),
 
-     path('profile/', views.profile, name='users-profile'),    
+     path('profile/', views.profile, name='users-profile')   
      
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += staticfiles_urlpatterns()
