@@ -7,8 +7,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
-    
-     path('profile/', views.profile, name='users-profile'),
      path('register/', views.RegisterView.as_view(), name='users-register'), 
 
      path('login/', views.CustomLoginView.as_view(redirect_authenticated_user=True, template_name='users/login.html',
@@ -21,7 +19,7 @@ urlpatterns = [
      path('password-change/', views.custom_password_change, name='password-change'),  
      path('password_change/done/', views.password_change_done, name='password-change-done'),
 
-     path('profile/', views.profile, name='users-profile')   
+     path('account/', views.account, name='account-settings'),   
      
 ]
 

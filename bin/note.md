@@ -55,7 +55,7 @@ in case login to admin site and got the error (User has no profile) ![Alt text](
 -Run this, will fix your issue without blowing out the database
 ```
 from django.contrib.auth.models import User
-from users.models import Profile
+from users.models import Account
 user = User.objects.get(username='enter_admin_user_here')
 profile = Profile(user=user)
 profile.save()
@@ -68,7 +68,7 @@ This command will copy the django-ckeditor static and media resources into the d
 `python3 manage.py collectstatic`
 
 # if forget superuser name and password
-`python manage.py shell  
+`python3 manage.py shell`  
 ```
 from django.contrib.auth import get_user_model
 

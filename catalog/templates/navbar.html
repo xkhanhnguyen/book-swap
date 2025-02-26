@@ -32,15 +32,16 @@
                         {{ user.get_username }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'users-profile' %}">Profile</a>
+                        <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="{% url 'all-books' %}">My Books</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Account Settings</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" href="{% url 'account-settings' %}">Account Settings</a>
                         <a class="dropdown-item" href="#">Help</a>
-                        <form method="post" action="{% url 'logout' %}">
+                        <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>
+                        <!-- <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit" style="background-color: transparent !important; border: none !important;" class="dropdown-item">Sign out</button>
-                        </form>
+                        </form> -->
 
                         <!-- text-decoration: none;
                         color: var(--text-light-grey);

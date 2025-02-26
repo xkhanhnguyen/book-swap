@@ -75,7 +75,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 
 
 @login_required
-def profile(request):
+def account(request):
     
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
@@ -91,7 +91,7 @@ def profile(request):
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)
 
-    return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'users/account_settings.html', {'user_form': user_form, 'profile_form': profile_form})
 
 @login_required
 def custom_password_change(request):

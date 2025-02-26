@@ -704,7 +704,7 @@ hr {
   background-color: rgb(7, 53, 7); 
 }
 
-button.dropdown-item {
+/* button.dropdown-item {
     color: #d3d3d3;
     padding: 10px;
     text-decoration: none;
@@ -715,4 +715,4 @@ button.dropdown-item {
 button.dropdown-item:hover {
     background-color: #555;
     color: #fff;
-}
+} */
