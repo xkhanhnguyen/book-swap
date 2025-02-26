@@ -1,89 +1,107 @@
-:root{
+:root {
   --background-color: #1e1e1e;
   --background-color-hover: #333;
+  --text-color: #ffffff; /* Ensures white text */
 }
+
 /* Light grey background */
 .site-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Form Container */
-  .form-container {
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    border: none; /* White form background */
-  }
-  
-  /* Labels */
-  .form-label {
-    font-weight: 600;
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  /* Input Fields */
-  input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    background: var(--background-color);
-  }
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* Make dropdown (select) text light grey */
+/* Form Container */
+.form-container {
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border: none;
+}
+
+/* Labels */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  color: var(--text-color); 
+}
+
+/* Input Fields */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  background: var(--background-color);
+  color: var(--text-color); 
+}
+
+/* Placeholder text */
+input::placeholder, textarea::placeholder {
+  color: #bbb; 
+}
+
+/* Fix for select dropdown text color */
 select {
-    color: #d3d3d3
-  }
-  
-  /* Ensure dropdown text becomes darker when an option is selected */
-  select option {
-    color: #d3d3d3;
-  }
-  
-  
-  textarea {
-    height: 120px;
-    resize: none;
-  }
-  
-  /* Form Actions */
-  .form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 16px;
-  }
-  
-  
-  /* add books button  */
-  .button-container {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .add-book-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    background-color: var(--background-color-hover);
-    border-radius: 5px;
-    transition: background 0.3s ease;
-  }
-  
-  .add-book-button:hover {
-    background-color: var(--background-color-hover);
-  }
-  
+  color: var(--text-color); 
+  background: var(--background-color);
+}
+
+select option {
+  color: black;
+  background: var(--background-color); 
+}
+
+*/
+select:focus {
+  outline: none;
+  border-color: #666;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/* Textarea styles */
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Centered Add Books Button */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-book-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  background-color: var(--background-color-hover);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.add-book-button:hover {
+  background-color: var(--background-color-hover);
+}
